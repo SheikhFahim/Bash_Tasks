@@ -46,5 +46,5 @@ if [ "$gre" -eq 1 ]
 then
 exit 1
 fi
-md5sum "$input_file" > checksum.log
+md5sum "$input_file" >> checksum.log
 echo "Checksum has been changed as files were changed"
