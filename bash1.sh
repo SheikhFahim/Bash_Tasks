@@ -44,7 +44,21 @@ gre=$(grep -c "$md" checksum.log)
 echo "$gre"
 if [ "$gre" -eq 1 ]
 then
-exit 1
+#exit 1
+echo "ami exit hochchi"
 fi
 md5sum "$input_file" >> checksum.log
 echo "Checksum has been changed as files were changed"
+
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  Descritpion: Zipping Multiple files inside a single zip folder into 10 files each zip
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+zipsplit -n 265000 archive.zip
+
+
+
+
+

@@ -1,0 +1,26 @@
+1. arugement checking
+   input_file output_file
+   file_io.sh input_file output_file
+   
+   if arugment error:
+    echo -e "Usage: $0 <input_file> <output_file>"
+    exit 1
+
+    input_file=1st arugement
+    output_file=2nd arugement
+
+2.
+check existence for input_file    
+
+3.
+check if md5sum already exists in cksum.log 
+if exist 
+    exit 
+
+md5sum $input_file >> cksum.log
+
+4. zip split
+given a folder with multiple pdfs
+you need to zip those pdfs but in each zip max 10  pdfs will be there
+each zip naming will be archive_<seg>.zip 
+seg is 1,2,3.........
