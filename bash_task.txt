@@ -24,3 +24,49 @@ given a folder with multiple pdfs
 you need to zip those pdfs but in each zip max 10  pdfs will be there
 each zip naming will be archive_<seg>.zip 
 seg is 1,2,3.........
+
+
+5. The folder from task 4 also contains a xml index file which contains information of the pdf statements(customer name, account no etc etc.) as well as the pdf name. The content is like below:
+<?xml version="1.0"?>
+<FilingJob>
+     <Batch SeqNum="1">
+          <FileRoom>REDWOOD CREDIT UNION</FileRoom>
+          <DeleteFiles>true</DeleteFiles>
+          <Document SeqNum="1">
+               <DocName>Notice of Investment Opportunities</DocName>
+               <Cabinet>NOTICES</Cabinet>
+               <Type>Notice of Investment Opportunities</Type>
+               <Institution>226</Institution>
+               <Indexes>
+                    <Index Name="ACCOUNT NUMBER" SmartIndexLookup="true">607145</Index>
+                    <Index Name="NAME">GERARD MARION TAYLOR</Index>
+                    <Index Name="DOC DATE">04/19/22</Index>
+               </Indexes>
+               <Pages>
+                    <Page SeqNum="1">04192022_NOTICES_DLC_607145_1.pdf</Page>
+               </Pages>
+          </Document>
+          <Document SeqNum="2">
+               <DocName>Notice of Investment Opportunities</DocName>
+               <Cabinet>NOTICES</Cabinet>
+               <Type>Notice of Investment Opportunities</Type>
+               <Institution>226</Institution>
+               <Indexes>
+                    <Index Name="ACCOUNT NUMBER" SmartIndexLookup="true">344316</Index>
+                    <Index Name="NAME">NANCY BECK</Index>
+                    <Index Name="DOC DATE">04/19/22</Index>
+               </Indexes>
+               <Pages>
+                    <Page SeqNum="2">04192022_NOTICES_DLC_344316_2.pdf</Page>
+               </Pages>
+          </Document>
+          ..........................
+          ..........................
+          ...........................
+     </Batch>
+</FilingJob>
+
+Where each Document tag represents the respective information for the pdf statement in mentioned in Page tag.
+each archive_<seg>.zip from task 4 should also include xml index file containing information only for those pdfs inside the zip. So if your archive_1.zip contains 10 pdfs the xml index inside it
+should contains 10 Document tag ( ofcourse with header and footer information at the beginning and end) and index file naming should be Index_<seg>.xml. 
+

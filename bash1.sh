@@ -60,5 +60,38 @@ zipsplit -n 265000 archive.zip
 
 
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  Descritpion: Zipping Documents with account number 10 files each 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ls | grep .pdf > lsoutput.txt
+i=1
+m=1
+
+while read line; do
+    echo $line
+    grep -B 11 -A 2 "$line" RWCU_NOTICES_DLC_1.xml >> Index_"$m".xml
+    if [ $i -eq 10 ]; then
+        head -n 5 RWCU_NOTICES_DLC_1.xml > temp.xml
+        cat Index_"$m".xml >> temp.xml
+        cat temp.xml > Index_"$m".xml
+        tail -n 2 RWCU_NOTICES_DLC_1.xml >> Index_"$m".xml
+        zip -u archive_"$m".zip "$line"
+        zip -u archive_"$m".zip Index_"$m".xml
+        m=$((m + 1))
+        i=$((1))
+    else
+        zip -u archive_"$m".zip "$line"
+        i=$((i + 1))
+    fi
+done < lsoutput.txt
+
+head -n 5 RWCU_NOTICES_DLC_1.xml > temp.xml
+cat Index_"$m".xml >> temp.xml
+cat temp.xml > Index_"$m".xml
+tail -n 2 RWCU_NOTICES_DLC_1.xml >> Index_"$m".xml
+zip -u archive_"$m".zip Index_"$m".xml
+
+
 
 
